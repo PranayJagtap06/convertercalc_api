@@ -1,14 +1,19 @@
 {
-    "version": 2,
     "builds": [
         {
-            "src": ".",
+            "src": "Dockerfile",
             "use": "@vercel/docker",
             "config": {
                 "docker": {
                     "image": "pranayj06/convertercalcapi:latest"
                 }
             }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
         }
     ]
 }
