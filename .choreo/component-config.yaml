@@ -1,10 +1,38 @@
+# apiVersion: core.choreo.dev/v1beta1
+# kind: ComponentConfig
+# spec:
+#   ikind: ComponentConfignbound:
+#   - name: ConverterCalc API
+#     port: 80
+#     type: REST
+#     networkVisibility: Public
+#     context: /
+    # schemaFilePath: convertercalc_openapi.yaml
+
+
 apiVersion: core.choreo.dev/v1beta1
 kind: ComponentConfig
-spec:
-  inbound:
-  - name: ConverterCalc API
-    port: 80
-    type: REST
-    networkVisibility: Public
-    context: /
-    # schemaFilePath: convertercalc_openapi.yaml
+type: REST_API
+buildPreset: docker
+build:
+  dockerFile: Dockerfile
+
+deploy:
+  dockerImage: ${{ ENV.CONTAINER_REGISTRY }}/your-image-name:${{ ENV.IMAGE_TAG }}
+  env:
+    - name: PORT
+      value: "80"
+
+ingress:
+  targetPort: 80
+
+endpoints:
+  - name: default
+    version: 1.0.0
+    url: /
+    method: GET
+
+  - name: response_plot
+    version: 1.0.0
+    url: /
+    method: POST
