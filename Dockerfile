@@ -1,8 +1,8 @@
 # Use the official Python image as the base image
 FROM python:3.11-alpine
 
-# Create a non-root user
-RUN adduser -D appuser
+# Create a non-root user with a specific UID
+RUN adduser -D -u 10001 appuser
 
 # Set the working directory in the container
 WORKDIR /code
@@ -20,7 +20,7 @@ COPY ./app /code/app
 RUN chown -R appuser:appuser /code
 
 # Switch to the non-root user
-USER appuser
+USER 10001
 
 # Expose the port that the FastAPI app will run on
 EXPOSE 80
