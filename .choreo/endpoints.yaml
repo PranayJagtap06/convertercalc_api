@@ -5,6 +5,7 @@ endpoints:
   type: REST
   networkVisibility: Public
   context: /root
+  schemaFilePath: calc_openapi.yaml
 
 
 # endpoints:

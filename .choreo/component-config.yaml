@@ -6,7 +6,7 @@ spec:
     type: REST
     networkVisibility: Public
     context: /root
-    # schemaFilePath: convertercalc_openapi.yaml
+    schemaFilePath: calc_openapi.yaml
 
 
 # apiVersion: core.choreo.dev/v1beta1
