@@ -14,11 +14,11 @@ class Params(BaseModel):
     resistor: float
     mode: str
 
-@app.get("/")
+@app.get("/root")
 async def root():
     return {"Welcome to ConverterCalc API up and running..."}
     
-@app.post("/")
+@app.post("/root")
 async def response_plot(params:Params):
     params = params.model_dump()
     d = params['d']

@@ -5,7 +5,7 @@ spec:
     port: 80
     type: REST
     networkVisibility: Public
-    context: /
+    context: /root
     # schemaFilePath: convertercalc_openapi.yaml
 
 

@@ -4,7 +4,7 @@ endpoints:
   port: 80
   type: REST
   networkVisibility: Public
-  context: /
+  context: /root
 
 
 # endpoints:
