@@ -1,21 +1,13 @@
 apiVersion: core.choreo.dev/v1beta1
 kind: ComponentConfig
-# spec:
-#   - name: ConverterCalc API
-#     port: 80
-#     type: REST
-#     networkVisibility: Public
-#     context: /app
+spec:
+  - name: ConverterCalc API
+    port: 80
+    type: REST
+    networkVisibility: Public
+    context: /
     # schemaFilePath: convertercalc_openapi.yaml
 
-name: convertercalc-api
-description: ConverterCalc API
-# version: 1.0.0
-image: convertercalc-api:latest
-port: 80
-environment:
-  - FASTAPI_HOST=0.0.0.0
-  - FASTAPI_PORT=80
 
 # apiVersion: core.choreo.dev/v1beta1
 # kind: ComponentConfig
