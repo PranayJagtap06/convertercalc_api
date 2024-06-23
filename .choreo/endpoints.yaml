@@ -1,66 +1,66 @@
 version: 0.1
-# endpoints:
-# - name: ConverterCalc API
-#   port: 80
-#   type: REST
-#   networkVisibility: Public
-#   context: /
-
-
 endpoints:
-  - name: root
-    endpoint: /
-    method: GET
-    summary: Root endpoint
-    description: Welcome message for the ConverterCalc API
+- name: ConverterCalc API
+  port: 80
+  type: REST
+  networkVisibility: Public
+  context: /app
 
-  - name: response_plot
-    endpoint: /
-    method: POST
-    summary: Generate response plot
-    description: Generate a plot based on provided parameters
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              d:
-                type: number
-                format: float
-              vin:
-                type: number
-                format: float
-              inductor:
-                type: number
-                format: float
-              capacitor:
-                type: number
-                format: float
-              resistor:
-                type: number
-                format: float
-              mode:
-                type: string
-            required:
-              - d
-              - vin
-              - inductor
-              - capacitor
-              - resistor
-              - mode
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                img:
-                  type: string
-                  description: Base64 encoded plot image
-                transfer_func:
-                  type: string
-                  description: Transfer function of the system
+
+# endpoints:
+#   - name: root
+#     endpoint: /
+#     method: GET
+#     summary: Root endpoint
+#     description: Welcome message for the ConverterCalc API
+
+#   - name: response_plot
+#     endpoint: /
+#     method: POST
+#     summary: Generate response plot
+#     description: Generate a plot based on provided parameters
+#     requestBody:
+#       required: true
+#       content:
+#         application/json:
+#           schema:
+#             type: object
+#             properties:
+#               d:
+#                 type: number
+#                 format: float
+#               vin:
+#                 type: number
+#                 format: float
+#               inductor:
+#                 type: number
+#                 format: float
+#               capacitor:
+#                 type: number
+#                 format: float
+#               resistor:
+#                 type: number
+#                 format: float
+#               mode:
+#                 type: string
+#             required:
+#               - d
+#               - vin
+#               - inductor
+#               - capacitor
+#               - resistor
+#               - mode
+#     responses:
+#       '200':
+#         description: Successful response
+#         content:
+#           application/json:
+#             schema:
+#               type: object
+#               properties:
+#                 img:
+#                   type: string
+#                   description: Base64 encoded plot image
+#                 transfer_func:
+#                   type: string
+#                   description: Transfer function of the system
