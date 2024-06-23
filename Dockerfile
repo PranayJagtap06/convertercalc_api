@@ -23,7 +23,7 @@ RUN chown -R appuser:appuser /code
 USER 10001
 
 # Expose the port that the FastAPI app will run on
-EXPOSE 80
+EXPOSE 8080
 
 # Set the command to run the FastAPI app
-CMD ["fastapi", "run", "app/main.py",  "--host", "0.0.0.0", "--port", "80"]
+CMD ["fastapi", "run", "app/main.py",  "--host", "0.0.0.0", "--port", "8080"]
