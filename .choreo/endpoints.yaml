@@ -1,0 +1,7 @@
+version: 0.1
+endpoints:
+- name: ConverterCalc API
+  port: 80
+  type: REST
+  networkVisibility: Public
+  context: /

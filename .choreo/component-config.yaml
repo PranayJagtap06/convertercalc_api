@@ -1,0 +1,10 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+  inbound:
+  - name: ConverterCalc API
+    port: 80
+    type: REST
+    networkVisibility: Public
+    context: /
+    # schemaFilePath: convertercalc_openapi.yaml
