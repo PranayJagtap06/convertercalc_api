@@ -1,6 +1,9 @@
 # Use the official Python image as the base image
 FROM python:3.11-alpine
 
+# Create a non-root user
+RUN adduser -D appuser
+
 # Set the working directory in the container
 WORKDIR /code
 
@@ -12,6 +15,12 @@ RUN pip install --no-cache-dir -r /code/requirements.txt
 
 # Copy the entire project into the container
 COPY ./app /code/app
+
+# Change ownership of the working directory to the non-root user
+RUN chown -R appuser:appuser /code
+
+# Switch to the non-root user
+USER appuser
 
 # Expose the port that the FastAPI app will run on
 EXPOSE 80
