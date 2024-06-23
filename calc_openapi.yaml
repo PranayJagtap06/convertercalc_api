@@ -1,80 +1,151 @@
-openapi: 3.0.3
-info:
-  title: ConverterCalc API
-  version: 1.0.0
-  description: API for ConverterCalc calculations and plotting
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Root",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
 
-paths:
-  /root:
-    get:
-      summary: Welcome message
-      description: Returns a welcome message for the ConverterCalc API
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:    
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: "Welcome to ConverterCalc API up and running..."
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Response Plot",
+        "operationId": "response_plot__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Params"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
 
-    post:
-      summary: Generate response plot
-      description: Generates a plot based on provided parameters
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Params'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  img:
-                    type: string
-                    description: Base64 encoded plot image
-                  transfer_func:
-                    type: string
-                    description: Transfer function of the system
-
-components:
-  schemas:
-    Params:
-      type: object
-      properties:
-        d:
-          type: number
-          format: float
-        vin:
-          type: number
-          format: float
-        inductor:
-          type: number
-          format: float
-        capacitor:
-          type: number
-          format: float
-        resistor:
-          type: number
-          format: float
-        mode:
-          type: string
-      required:
-        - d
-        - vin
-        - inductor
-        - capacitor
-        - resistor
-        - mode
-
-servers:
-  - url: http://0.0.0.0:80
-    description: Local development server
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Params": {
+        "properties": {
+          "d": {
+            "type": "number",
+            "title": "D"
+          },
+          "vin": {
+            "type": "number",
+            "title": "Vin"
+          },
+          "inductor": {
+            "type": "number",
+            "title": "Inductor"
+          },
+          "capacitor": {
+            "type": "number",
+            "title": "Capacitor"
+          },
+          "resistor": {
+            "type": "number",
+            "title": "Resistor"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          }
+        },
+        "type": "object",
+        "required": [
+          "d",
+          "vin",
+          "inductor",
+          "capacitor",
+          "resistor",
+          "mode"
+        ],
+        "title": "Params"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
