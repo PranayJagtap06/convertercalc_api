@@ -1,10 +1,60 @@
 version: 0.1
+# endpoints:
+# - name: ConverterCalc API
+#   port: 80
+#   type: REST
+#   networkVisibility: Public
+#   context: /app
+
+
 endpoints:
-- name: ConverterCalc API
-  port: 80
-  type: REST
-  networkVisibility: Public
-  context: /app
+  - name: root
+    path: /
+    method: GET
+    description: Welcome to ConverterCalc API
+    responses:
+      - status: 200
+        description: API is up and running
+
+  - name: response_plot
+    path: /
+    method: POST
+    description: Generate plot and transfer function
+    request:
+      body:
+        - name: params
+          description: Parameters for plot generation
+          schema:
+            type: object
+            properties:
+              d:
+                type: number
+                description: Duty cycle
+              vin:
+                type: number
+                description: Input voltage
+              inductor:
+                type: number
+                description: Inductor value
+              capacitor:
+                type: number
+                description: Capacitor value
+              resistor:
+                type: number
+                description: Resistor value
+              mode:
+                type: string
+                description: Mode of operation
+    responses:
+      - status: 200
+        description: Plot and transfer function generated
+        body:
+          - name: img
+            description: Base64 encoded plot image
+            type: string
+          - name: transfer_func
+            description: Transfer function
+            type: string
 
 
 # endpoints:
