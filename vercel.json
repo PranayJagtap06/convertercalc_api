@@ -2,7 +2,7 @@
     "version": 2,
 
     "functions": {
-        "api/main.py": {
+        "api/index.py": {
             "memory": 500,
             "maxDuration": 30
         }
@@ -10,7 +10,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/api/main.py"
+            "dest": "/api/index.py"
         }
     ]
 }
