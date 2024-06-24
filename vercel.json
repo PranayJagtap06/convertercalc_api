@@ -2,7 +2,7 @@
     "version": 2,
 
     "functions": {
-        "app/main.py": {
+        "pages/api/users/**/*.py": {
             "memory": 500,
             "maxDuration": 30
         }
