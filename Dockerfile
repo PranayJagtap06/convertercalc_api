@@ -14,7 +14,7 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir -r /code/requirements.txt
 
 # Copy the entire project into the container
-COPY ./app /code/app
+COPY ./api /code/api
 
 # Change ownership of the working directory to the non-root user
 RUN chown -R appuser:appuser /code
@@ -26,4 +26,4 @@ USER 10001
 EXPOSE 8080
 
 # Set the command to run the FastAPI app
-CMD ["fastapi", "run", "app/main.py",  "--host", "0.0.0.0", "--port", "8080"]
+CMD ["fastapi", "run", "api/main.py",  "--host", "0.0.0.0", "--port", "8080"]
