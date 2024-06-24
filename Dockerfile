@@ -26,4 +26,4 @@ USER 10001
 EXPOSE 8080
 
 # Set the command to run the FastAPI app
-CMD ["fastapi", "run", "api/main.py",  "--host", "0.0.0.0", "--port", "8080"]
+CMD ["fastapi", "run", "api/index.py",  "--host", "0.0.0.0", "--port", "8080"]
