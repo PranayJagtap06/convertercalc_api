@@ -9,7 +9,7 @@ def plot_response(d: float, vin: float, inductor: float, capacitor: float, resis
     response_functions = {
         'Buck': buck_response,
         'Boost': boost_response,
-        'BuckBoost': buckboost_response
+        'BuckBoost': buck_boost_response
     }
 
     # if mode == 'Buck':
@@ -19,7 +19,7 @@ def plot_response(d: float, vin: float, inductor: float, capacitor: float, resis
     #     t, y, sys = boost_response(d, vin, inductor, capacitor, resistor)
     #     y_ss = y[-1]
     # elif mode == 'BuckBoost':
-    #     t, y, sys = buckboost_response(d, vin, inductor, capacitor, resistor)
+    #     t, y, sys = buck_boost_response(d, vin, inductor, capacitor, resistor)
     #     y_ss = y[-1]
     # else:
     #     return tuple()
@@ -45,7 +45,7 @@ def plot_response(d: float, vin: float, inductor: float, capacitor: float, resis
     return buf.getvalue(), str(sys)
 
 
-def buck_response(d: float, vin: float, inductor: float, capacitor: float, resistor: float) -> list:
+def buck_response(d: float, vin: float, inductor: float, capacitor: float, resistor: float) -> tuple:
     """
     Buck Converter transfer function response.
     :param d: duty cycle.
@@ -64,7 +64,7 @@ def buck_response(d: float, vin: float, inductor: float, capacitor: float, resis
     return t_, y_, sys_
 
 
-def boost_response(d: float, vin: float, inductor: float, capacitor: float, resistor: float) -> list:
+def boost_response(d: float, vin: float, inductor: float, capacitor: float, resistor: float) -> tuple:
     """
     Boost Converter transfer function response.
     :param d: duty cycle.
@@ -83,7 +83,7 @@ def boost_response(d: float, vin: float, inductor: float, capacitor: float, resi
     return t_, y_, sys_
 
 
-def buckboost_response(d: float, vin: float, inductor: float, capacitor: float, resistor: float) -> list:
+def buck_boost_response(d: float, vin: float, inductor: float, capacitor: float, resistor: float) -> tuple:
     """
     Buck Boost Converter transfer function response.
     :param d: duty cycle.

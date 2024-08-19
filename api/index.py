@@ -1,6 +1,6 @@
 import base64
-from fastapi import FastAPI, Request, Response
-from pydantic import BaseModel, FiniteFloat
+from fastapi import FastAPI
+from pydantic import BaseModel
 from tf_response import plot_response
 
 
